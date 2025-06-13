@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jadwal Shift</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .name-0 { background-color: #ffe0e0; }
+        .name-1 { background-color: #e0ffe0; }
+        .name-2 { background-color: #e0e0ff; }
+        .name-3 { background-color: #fff0b3; }
+    </style>
+</head>
+<body>
+    <h2>Jadwal Shift</h2>
+    <table>
+        <tr>
+            <th>Tanggal</th>
+            <th>Nama</th>
+            <th>Shift</th>
+        </tr>
+        {% for shift in shifts %}
+        <tr class="name-{{ forloop.counter0|divisibleby:4 }}">
+            <td>{{ shift.date }}</td>
+            <td>{{ shift.staff.name }}</td>
+            <td>{{ shift.get_shift_display }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Jadwal Libur</h2>
+    <table>
+        <tr>
+            <th>Tanggal</th>
+            <th>Nama</th>
+        </tr>
+        {% for off in days_off %}
+        <tr>
+            <td>{{ off.date }}</td>
+            <td>{{ off.staff.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
