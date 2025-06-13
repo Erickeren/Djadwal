@@ -17,9 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from template
-
+from app import views
 
 urlpatterns = [
-    path("/", template.input.html),
+    path('admin/', admin.site.urls),
+    path('/', views.input_view, name='input'),
 ]
+
